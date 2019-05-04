@@ -23,7 +23,7 @@ def transcribe(filename):
     # Imports the Google Cloud client library
     # [START speech_python_migration_imports]
     from google.cloud import speech
-    from google.cloud.speech import enums
+    # from google.cloud.speech import enums
     from google.cloud.speech import types
     # [END speech_python_migration_imports]
 
@@ -44,7 +44,7 @@ def transcribe(filename):
         audio = types.RecognitionAudio(content=content)
 
     config = types.RecognitionConfig(
-        encoding=enums.RecognitionConfig.AudioEncoding.FLAC,
+        # encoding=enums.RecognitionConfig.AudioEncoding.FLAC,
         sample_rate_hertz=44100,
         language_code='en-US')
 
@@ -53,4 +53,5 @@ def transcribe(filename):
 
     for result in response.results:
         print('Transcript: {}'.format(result.alternatives[0].transcript))
+        return result.alternatives[0].transcript
     # [END speech_quickstart]
