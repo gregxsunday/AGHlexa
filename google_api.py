@@ -15,7 +15,7 @@
 # limitations under the License.
 
 
-def run_quickstart():
+def transcribe(filename):
     # [START speech_quickstart]
     import io
     import os
@@ -36,7 +36,7 @@ def run_quickstart():
     # The name of the audio file to transcribe
     file_name = os.path.join(
         os.path.dirname(__file__),
-        'test.flac')
+        filename)
 
     # Loads the audio into memory
     with io.open(file_name, 'rb') as audio_file:
@@ -54,7 +54,3 @@ def run_quickstart():
     for result in response.results:
         print('Transcript: {}'.format(result.alternatives[0].transcript))
     # [END speech_quickstart]
-
-
-if __name__ == '__main__':
-    run_quickstart()
