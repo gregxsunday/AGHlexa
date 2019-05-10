@@ -1,8 +1,7 @@
-import tempfile
 import queue
 import sys
 
-def record_audio_no_duration():
+def record_audio_no_duration(filename):
     try:
         import sounddevice as sd
         import soundfile as sf
@@ -13,12 +12,10 @@ def record_audio_no_duration():
         # soundfile expects an int, sounddevice provides a float:
         samplerate = int(device_info['default_samplerate'])
 
-        filename = tempfile.mktemp(prefix='alexa_temp_audio', suffix='.wav', dir='')
         channels = 1
         q = queue.Queue()
 
         def callback(indata, frames, time, status):
-            print('Klara')
             """This is called (from a separate thread) for each audio block."""
             if status:
                 print(status, file=sys.stderr)
