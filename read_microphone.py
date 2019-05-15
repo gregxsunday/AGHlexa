@@ -1,5 +1,6 @@
 import queue
 import sys
+import tempfile
 
 def record_audio_no_duration(filename):
     try:
@@ -7,6 +8,9 @@ def record_audio_no_duration(filename):
         import soundfile as sf
         import numpy  # Make sure NumPy is loaded before it is used in the callback
         assert numpy  # avoid "imported but unused" message (W0611)
+
+        input('Press enter to start recording')
+        filename = tempfile.mktemp(prefix='alexa_temp_audio', suffix='.wav', dir='')
 
         device_info = sd.query_devices(None, 'input')
         # soundfile expects an int, sounddevice provides a float:
@@ -34,4 +38,6 @@ def record_audio_no_duration(filename):
 
     except KeyboardInterrupt:
         print('\nRecording finished: ' + repr(filename))
+        from google_api import transcribe
+        transcribe(filename)
     return filename
