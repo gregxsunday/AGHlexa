@@ -2,7 +2,7 @@ import queue
 import sys
 import tempfile
 
-def record_audio_no_duration(filename):
+def record_audio_no_duration():
     try:
         import sounddevice as sd
         import soundfile as sf
