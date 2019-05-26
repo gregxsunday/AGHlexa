@@ -22,11 +22,11 @@ class Weather:
             desc=self.desc, temp=self.temp,
             wind=self.wind))
 
-#WAKEWORD weather @CITY
-def show_the_weather(city=''):
-    webbrowser.open('https://www.google.com/search?q=pogoda {}'.format(city))
+# #WAKEWORD weather @CITY
+# def show_the_weather(city=''):
+#     webbrowser.open('https://www.google.com/search?q=pogoda {}'.format(city))
 
-#WAKEWORD what is the weather in @city
+#WAKEWORD weather @city
 def print_the_weather(city, api_key):
     weather = Weather(city, api_key)
     weather.print_weather()
