@@ -2,7 +2,7 @@ import requests
 import bs4
 import sys
 
-#WAKEWORD suchar
+#WAKEWORD joke
 def suchar():
     try:
         resp = requests.get('http://piszsuchary.pl/losuj')

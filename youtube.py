@@ -2,7 +2,7 @@ import requests
 import bs4
 import webbrowser
 
-#WAKEWORD play @query on youtube
+#WAKEWORD youtube @query
 def search(query):
     try:
         resp = requests.get('https://www.youtube.com/results?search_query={}'.format(query))

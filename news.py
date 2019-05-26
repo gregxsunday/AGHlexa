@@ -2,7 +2,7 @@ import requests
 import json
 import sys
 
-#WAKEWORD news about @topic
+#WAKEWORD news @topic
 def news(topic, api_key):
     url = f'https://newsapi.org/v2/everything?q={topic}&from=2019-04-26&sortBy=publishedAt&apiKey={api_key}&language=en'
     try:

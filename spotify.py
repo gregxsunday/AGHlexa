@@ -1,6 +1,6 @@
 import spotipy
 import webbrowser
 
-#WAKEWORD play @song on spotify
+#WAKEWORD spotify @song
 def play(song):
     webbrowser.open('spotify:search:{}'.format(song))
