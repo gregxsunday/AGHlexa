@@ -2,8 +2,13 @@ import requests
 import bs4
 import webbrowser
 
-def search(command):
-    resp = requests.get('https://www.youtube.com/results?search_query={}'.format(command))
+#WAKEWORD play @query on youtube
+def search(query):
+    try:
+        resp = requests.get('https://www.youtube.com/results?search_query={}'.format(query))
+    except requests.exceptions.RequestException as e:
+        print(e)
+        sys.exit(1)
     soup = bs4.BeautifulSoup(resp.text, 'html.parser')
     for link in soup.find_all('a'):
         if '/watch?v=' in link.get('href') and link.string != None:

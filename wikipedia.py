@@ -13,6 +13,8 @@ def remove_brackets(text):
             text = text[:start] + text[end + 1:]
     return text
 
+
+#WAKEWORD what is @query
 def find_on_wikipedia(query):
     try:
         resp = requests.get('https://en.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&search={}&namespace=0&limit=10&suggest=true'.format(query))
