@@ -39,5 +39,6 @@ def record_audio_no_duration():
     except KeyboardInterrupt:
         print('\nRecording finished: ' + repr(filename))
         from google_api import transcribe
-        transcribe(filename)
+        cmd = transcribe(filename)
+
     return filename

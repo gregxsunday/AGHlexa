@@ -52,6 +52,6 @@ def transcribe(filename):
     response = client.recognize(config, audio)
 
     for result in response.results:
-        print('Transcript: {}'.format(result.alternatives[0].transcript))
+        # print('Transcript: {}'.format(result.alternatives[0].transcript))
         return result.alternatives[0].transcript
     # [END speech_quickstart]
