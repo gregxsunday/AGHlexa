@@ -1,4 +1,4 @@
-list_actions = ["YouTube"]  # add supported commands here
+list_actions = ["youtube", "wikipedia", 'weather', 'joke', 'news']  # add supported commands here
 
 
 def compare_words(text, text_corr):

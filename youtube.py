@@ -1,6 +1,7 @@
 import requests
 import bs4
 import webbrowser
+import sys
 
 #WAKEWORD youtube @query
 def search(query):

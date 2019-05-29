@@ -22,11 +22,19 @@ class Weather:
             desc=self.desc, temp=self.temp,
             wind=self.wind))
 
+    def get_weather(self):
+        return '{desc}, temperature is currently {temp} Celcius degrees, wind speed {wind} m/s'.format(
+            desc=self.desc, temp=self.temp,
+            wind=self.wind)
+
 # #WAKEWORD weather @CITY
 # def show_the_weather(city=''):
 #     webbrowser.open('https://www.google.com/search?q=pogoda {}'.format(city))
 
-#WAKEWORD weather @city
-def print_the_weather(city, api_key):
+
+# WAKEWORD weather @city
+def print_the_weather(city):
+    with open("D:\Docs\studia\semestr 4\python\openweatherkey.txt", 'r') as infile:
+        api_key = infile.read()
     weather = Weather(city, api_key)
-    weather.print_weather()
+    return weather.get_weather()

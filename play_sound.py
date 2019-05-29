@@ -3,8 +3,8 @@ from playsound import playsound
 from tempfile import mktemp, TemporaryFile
 from os import remove
 
-def text_to_speech(text):
-    tts = gTTS(text, lang='en')
+def text_to_speech(text, lang='en'):
+    tts = gTTS(text, lang=lang)
     filename = mktemp(prefix='tts_temp_audio', suffix='.mp3', dir='')
     with open(filename, 'wb') as f:
         tts.write_to_fp(f)

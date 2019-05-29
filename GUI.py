@@ -2,6 +2,8 @@ from tkinter import *
 import threading
 import settings_GUI
 import Actions
+import read_microphone
+import play_sound
 
 root = None
 session_settings = None
@@ -22,11 +24,32 @@ def btn_settings_opr():
 
 
 def btn_listen_opr():
-    input_procedure = "Play sth"  # change to google API input
+    input_procedure = read_microphone.record_audio_no_duration()
     instruction_with_args = Actions.get_instruction_with_args(input_procedure)
     if instruction_with_args[0] == "WrongInstruction":
         information.labelText = "Wrong instruction"
         return
+
+    if instruction_with_args[0] == 'youtube':
+        import youtube
+        youtube.search(' '.join(instruction_with_args[1]))
+    elif instruction_with_args[0] == 'wikipedia':
+        import wikipedia
+        res = wikipedia.find_on_wikipedia(' '.join(instruction_with_args[1]))
+        play_sound.text_to_speech(res)
+    elif instruction_with_args[0] == 'weather':
+        import weather
+        res = weather.print_the_weather(' '.join(instruction_with_args[1]))
+        play_sound.text_to_speech(res)
+    elif instruction_with_args[0] == 'joke':
+        import suchary
+        res = suchary.suchar()
+        play_sound.text_to_speech(res, 'pl')
+    elif instruction_with_args[0] == 'news':
+        import news
+        res = news.news(' '.join(instruction_with_args[1]))
+        play_sound.text_to_speech(res)
+
     return  # Place for program modules execution
 
 
