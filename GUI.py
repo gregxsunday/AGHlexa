@@ -28,6 +28,7 @@ def btn_listen_opr():
     instruction_with_args = Actions.get_instruction_with_args(input_procedure)
     if instruction_with_args[0] == "WrongInstruction":
         information.labelText = "Wrong instruction"
+        play_sound.text_to_speech("Sorry, I did\'t catch that.")
         return
 
     if instruction_with_args[0] == 'youtube':
@@ -49,6 +50,8 @@ def btn_listen_opr():
         import news
         res = news.news(' '.join(instruction_with_args[1]))
         play_sound.text_to_speech(res)
+    else:
+    	play_sound.text_to_speech('Sorry, I didn\'t catch that')
 
     return  # Place for program modules execution
 

@@ -46,7 +46,7 @@ def record_audio_no_duration():
                 # and avg > threshold:
                 started = True
 
-            if started and avg < 5:
+            if started and avg < threshold:
                 flag = False
             # cr_time = timetime.time()
             # # delta = int(cr_time - start)
