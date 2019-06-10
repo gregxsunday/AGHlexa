@@ -4,6 +4,8 @@ import settings_GUI
 import Actions
 import read_microphone
 import play_sound
+from google_api import transcribe
+import os
 
 root = None
 session_settings = None
@@ -24,7 +26,12 @@ def btn_settings_opr():
 
 
 def btn_listen_opr():
-    input_procedure = read_microphone.record_audio_no_duration()
+    #tutaj ustawienie statusu, że słucha
+    filename = read_microphone.record_audio_no_duration()
+    #tutaj ustawienie statusu, że wysyła do google api
+    input_procedure = transcribe(filename).lower()
+    os.remove(filename)
+    #tutaj ustawienie statusu, że wykonuje komendę
     instruction_with_args = Actions.get_instruction_with_args(input_procedure)
     if instruction_with_args[0] == "WrongInstruction":
         information.labelText = "Wrong instruction"
