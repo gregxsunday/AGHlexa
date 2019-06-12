@@ -9,12 +9,12 @@ Informatyka rok II sem. IV Python projekt
      - konfiguracja 'wake word' ❌
      - optymalizacja nasłuchiwania (rozpoznawanie kiedy jest cokolwiek mówione) ✅
    - rozpoznanie komendy **MC 3. zajęcia**
-     - dobór komendy do instniejącego polecenia
-     - szacowanie, czy rozpoznane słowo nie jest podobne do jednej z naszych komend
+     - dobór komendy do instniejącego polecenia✅
+     - szacowanie, czy rozpoznane słowo nie jest podobne do jednej z naszych komend✅
    - przekazanie komendy **MC 3. zajęcia**
      - wypisanie rozpoznanej komendy
      - powtórzenie rozpoznanej komendy
-     - przekazanie gotowej komendy do modułu wykonania komendy 
+     - przekazanie gotowej komendy do modułu wykonania komendy ✅
 2. Wykonanie komendy **GN**
    - moduły wbudowane 
      - moduł yt **4. zajęcia** ✅
@@ -27,12 +27,12 @@ Informatyka rok II sem. IV Python projekt
      - wczytywanie customowych komend użytkownika ❌
 3. Ustawienia aplikacji **MC 4. zajęcia**
    - ustawienia mikrofonu 
-     - głośność progowa
-     - ‘Wake world’
+     - głośność progowa✅
+     - ‘Wake world’✅
    - ustawienia aplikacji
-     - Rozdzielczość
-     - Chodzenie w tle
+     - Rozdzielczość✅
+     - Chodzenie w tle❌
 4. GUI **MC 5. zajęcia**
-   - prosty interfejs graficzny
-   - ekran z ustawieniami aplikacji
-   - ekran z customizowanymi modułami
+   - prosty interfejs graficzny✅
+   - ekran z ustawieniami aplikacji✅
+   - ekran z customizowanymi modułami❌
