@@ -25,6 +25,7 @@ def run(settings):
     global ent_minimal_volume
     global ent_resX
     global ent_resY
+    global ent_maxP
     session_settings = settings
     root = Tk()
     root.title("A(GH)lexa - settings")
@@ -67,3 +68,9 @@ def run(settings):
     btn_save_and_close.grid(row=5, column=0, columnspan=2)
 
     root.mainloop()
+
+
+if __name__ == "__main__":
+    import settings
+    st = settings.Setter()
+    run(st)
