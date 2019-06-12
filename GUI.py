@@ -39,26 +39,26 @@ def btn_listen_opr():
         return
 
     if instruction_with_args[0] == 'youtube':
-        import youtube
+        import modules.youtube as youtube
         youtube.search(' '.join(instruction_with_args[1]))
     elif instruction_with_args[0] == 'wikipedia':
-        import wikipedia
+        import modules.wikipedia as wikipedia
         res = wikipedia.find_on_wikipedia(' '.join(instruction_with_args[1]))
         play_sound.text_to_speech(res)
     elif instruction_with_args[0] == 'weather':
-        import weather
+        import modules.weather as weather
         res = weather.print_the_weather(' '.join(instruction_with_args[1]))
         play_sound.text_to_speech(res)
     elif instruction_with_args[0] == 'joke':
-        import suchary
+        import modules.suchary as suchary
         res = suchary.suchar()
         play_sound.text_to_speech(res, 'pl')
     elif instruction_with_args[0] == 'news':
-        import news
+        import modules.news as news
         res = news.news(' '.join(instruction_with_args[1]))
         play_sound.text_to_speech(res)
     else:
-    	play_sound.text_to_speech('Sorry, I didn\'t catch that')
+        play_sound.text_to_speech('Sorry, I didn\'t catch that')
 
     return  # Place for program modules execution
 
