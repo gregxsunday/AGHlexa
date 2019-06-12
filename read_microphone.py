@@ -30,20 +30,23 @@ def record_audio_no_duration():
         started = False
         global threshold
         threshold = settings.get_min_volume()/2
+        global max_pause
+        max_pause = settings.get_max_pause()
 
         def callback(indata, frames, time, status):
             """This is called (from a separate thread) for each audio block."""
             global started
             global flag
             global threshold
+            global max_pause
             if status:
                 print(status, file=sys.stderr)
             volume_norm = int(numpy.linalg.norm(indata) * 10)
-            if len(last_two_seconds) > 39*2:
+            if len(last_two_seconds) > 39*max_pause:
                 last_two_seconds.popleft()
             last_two_seconds.append(volume_norm)
             avg = mean(last_two_seconds)
-            if len(last_two_seconds) > 39*2:
+            if len(last_two_seconds) > 39*max_pause:
                 started = True
 
             if started and avg < threshold:

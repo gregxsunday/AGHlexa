@@ -52,5 +52,7 @@ class Setter:
 
 
 if __name__ == "__main__":
-    s = Setter("ala", 29)
+    from settings import Setter
+    s = Setter("ala", 10)
     print(s.get_min_volume())
+    print(s.get_max_pause())
