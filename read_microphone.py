@@ -6,7 +6,7 @@ from collections import deque
 import sounddevice as sd
 import soundfile as sf
 import numpy
-
+import pickle
 
 def record_audio_no_duration():
     try:
@@ -16,6 +16,11 @@ def record_audio_no_duration():
         # soundfile expects an int, sounddevice provides a float:
         samplerate = int(device_info['default_samplerate'])
 
+        #load settings
+        with open('saved_settings.settings', 'rb') as infile:
+            settings = pickle.load(infile)
+
+
         channels = 1
         q = Queue()
         global flag
@@ -23,12 +28,14 @@ def record_audio_no_duration():
         last_two_seconds = deque()
         global started
         started = False
+        global threshold
+        threshold = settings.get_min_volume()/2
 
         def callback(indata, frames, time, status):
             """This is called (from a separate thread) for each audio block."""
             global started
             global flag
-            threshold = 5
+            global threshold
             if status:
                 print(status, file=sys.stderr)
             volume_norm = int(numpy.linalg.norm(indata) * 10)
