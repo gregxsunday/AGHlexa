@@ -6,6 +6,7 @@ ent_ww = None
 ent_minimal_volume = None
 ent_resX = None
 ent_resY = None
+ent_maxP = None
 
 
 def btn_close_opr():
@@ -13,6 +14,7 @@ def btn_close_opr():
     session_settings.set_width_res(ent_resX.get())
     session_settings.set_wake_word(ent_ww.get())
     session_settings.set_min_volume(ent_minimal_volume.get())
+    session_settings.set_max_pause(ent_maxP.get())
     root.destroy()
 
 
@@ -55,7 +57,13 @@ def run(settings):
     ent_resX.insert(END, session_settings.get_height_res())
     ent_resX.grid(row=3, column=1, sticky=W)
 
+    lbl_maxP = Label(root, text="Maximal wait pause:")
+    lbl_maxP.grid(row=4, column=0, sticky=E)
+    ent_maxP = Entry(root)
+    ent_maxP.insert(END, session_settings.get_max_pause())
+    ent_maxP.grid(row=4, column=1, sticky=W)
+
     btn_save_and_close = Button(root, text="Save and close", command=btn_close_opr)
-    btn_save_and_close.grid(row=4, column=0, columnspan=2)
+    btn_save_and_close.grid(row=5, column=0, columnspan=2)
 
     root.mainloop()

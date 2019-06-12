@@ -7,11 +7,12 @@ class Setter:
         pickle.dump(self, pickle_out)
         pickle_out.close()
 
-    def __init__(self, wake_word="alexa", min_volume=10, width_res=300, height_res=200):
+    def __init__(self, wake_word="alexa", min_volume=10, width_res=300, height_res=200, max_pause=2):
         self._wake_word = wake_word
         self._min_volume = min_volume
         self._width_res = width_res
         self._height_res = height_res
+        self._max_pause = max_pause
         self.update()
 
     def set_wake_word(self, wake_word):
@@ -41,6 +42,13 @@ class Setter:
 
     def get_height_res(self):
         return self._height_res
+
+    def set_max_pause(self, max_pause):
+        self._max_pause = max_pause
+        self.update()
+
+    def get_max_pause(self):
+        return self._max_pause
 
 
 if __name__ == "__main__":
