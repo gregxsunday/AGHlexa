@@ -1,6 +1,5 @@
 import requests
 import bs4
-import sys
 
 #WAKEWORD joke
 def suchar():
@@ -8,10 +7,14 @@ def suchar():
         resp = requests.get('http://piszsuchary.pl/losuj')
     except requests.exceptions.RequestException as e:
         print(e)
-        sys.exit(1)
+        return 'Joke not found'
     soup = bs4.BeautifulSoup(resp.text, 'html.parser')
 
-    suchar = soup.find_all('pre')[0].get_text()
+    try:
+        suchar = soup.find_all('pre')[0].get_text()
+    except Exception as e:
+        print(e)
+        return 'Joke not found'
 
     return suchar[:suchar.find('|')]
 

@@ -1,6 +1,5 @@
 import requests
 import json
-import sys
 
 #WAKEWORD news @topic
 def news(topic):
@@ -11,7 +10,7 @@ def news(topic):
         resp = requests.get(url)
     except requests.exceptions.RequestException as e:
         print(e)
-        sys.exit(1)
+        return 'News not found'
     resp = json.loads(resp.text)
     try:
         news = resp['articles'][0]['description']
