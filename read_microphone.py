@@ -29,9 +29,9 @@ def record_audio_no_duration():
         global started
         started = False
         global threshold
-        threshold = settings.get_min_volume()/2
+        threshold = int(settings.get_min_volume())/2
         global max_pause
-        max_pause = settings.get_max_pause()
+        max_pause = int(settings.get_max_pause())
 
         def callback(indata, frames, time, status):
             """This is called (from a separate thread) for each audio block."""

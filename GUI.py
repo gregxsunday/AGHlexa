@@ -27,17 +27,31 @@ def btn_settings_opr():
 
 def btn_listen_opr():
     #tutaj ustawienie statusu, że słucha
+    information.configure(text='listening')
+    root.update()
     filename = read_microphone.record_audio_no_duration()
     #tutaj ustawienie statusu, że wysyła do google api
-    input_procedure = transcribe(filename).lower()
+    information.configure(text="Sending request")
+    root.update()
+    input_procedure = transcribe(filename)
     os.remove(filename)
+    if input_procedure == None:
+        play_sound.text_to_speech('Sorry, I didn\'t catch that')
+        information.configure(text="Say something")
+        root.update()
+        return
+    input_procedure = input_procedure.lower()
     #tutaj ustawienie statusu, że wykonuje komendę
     instruction_with_args = Actions.get_instruction_with_args(input_procedure)
     if instruction_with_args[0] == "WrongInstruction":
         information.labelText = "Wrong instruction"
         play_sound.text_to_speech("Sorry, I did\'t catch that.")
+        information.configure(text="Say something")
+        root.update()
         return
 
+    information.configure(text="Executing command")
+    root.update()
     if instruction_with_args[0] == 'youtube':
         import modules.youtube as youtube
         youtube.search(' '.join(instruction_with_args[1]))
@@ -60,6 +74,8 @@ def btn_listen_opr():
     else:
         play_sound.text_to_speech('Sorry, I didn\'t catch that')
 
+    information.configure(text="Say something")
+    root.update()
     return  # Place for program modules execution
 
 
